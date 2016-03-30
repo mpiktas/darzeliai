@@ -248,7 +248,7 @@ server <- function(input, output) {
         }
         
         if ("demand" %in% input$layer) {
-            m = m %>% addCircles(
+            m = m %>% addCircleMarkers(
                 lng = df_MAIN$lng,
                 lat = df_MAIN$lat,
                 weight = 2,
@@ -258,7 +258,7 @@ server <- function(input, output) {
                 stroke = TRUE,
                 fillOpacity = 0.6,
                 
-                radius = df_MAIN$Demand + df_MAIN$supply,
+                radius = (df_MAIN$Demand + df_MAIN$supply)/50,
                 popup = paste(
                   "<strong>", df_MAIN$dabartinisInstitucijosPavadinimasLt, "</strong><br/>",
                     df_MAIN$institucijosAdresasTekstu, "<br/>",
@@ -269,7 +269,7 @@ server <- function(input, output) {
         }
         
         if ("supply" %in% input$layer) {
-            m = m %>% addCircles(
+            m = m %>% addCircleMarkers(
                 lng = df_MAIN$lng,
                 lat = df_MAIN$lat,
                 weight = 1,
@@ -278,7 +278,7 @@ server <- function(input, output) {
                 fillOpacity = 0.6,
                 fill = TRUE,
                 stroke = TRUE,
-                radius = df_MAIN$supply,
+                radius = df_MAIN$supply/50,
                 popup = paste(
                     "<strong>", df_MAIN$dabartinisInstitucijosPavadinimasLt, "</strong><br/>",
                     df_MAIN$institucijosAdresasTekstu, "<br/>",
